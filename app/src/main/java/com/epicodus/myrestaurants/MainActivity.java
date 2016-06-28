@@ -11,26 +11,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-//    public static final String TAG = MainActivity.class.getSimpleName();
-    private Button mFindRestaurantsButton;
-    private EditText mLocationEditText;
-    private TextView mAppNameTextView;
+    @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
+    @Bind(R.id.locationEditText) EditText mLocationEditText;
+    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAppNameTextView = (TextView) findViewById(R.id.appNameTextView);
+        ButterKnife.bind(this);
+
         Typeface droidSansFont = Typeface.createFromAsset(getAssets(), "fonts/DroidSans.ttf");
         mAppNameTextView.setTypeface(droidSansFont);
-        mLocationEditText = (EditText) findViewById(R.id.locationEditText);
-        mFindRestaurantsButton = (Button) findViewById(R.id.findRestaurantsButton);
+
         mFindRestaurantsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String location = mLocationEditText.getText().toString();
-//                Log.d(TAG, location);
                 Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
                 intent.putExtra("location", location);
                 startActivity(intent);
