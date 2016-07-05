@@ -1,5 +1,8 @@
 package com.epicodus.myrestaurants;
 
+import com.epicodus.myrestaurants.Constants;
+import com.epicodus.myrestaurants.Restaurant;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
